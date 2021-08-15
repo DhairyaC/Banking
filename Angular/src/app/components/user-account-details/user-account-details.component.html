@@ -1,0 +1,76 @@
+<h5>Basic Details</h5>
+<form #f="ngForm" class="border p-2" >
+    <div class="row">
+        <div class="col">
+            <label for="">Title</label>
+            <input type="text" class="form-control" name="title" #title="ngModel" [(ngModel)]="details.title">
+        </div>
+        <div class="col">
+            <label for="">First Name</label>
+            <input type="text" class="form-control" name="first_name" #first_name="ngModel" [(ngModel)]="details.first_name">
+        </div>
+        <div class="col">
+            <label for="">Last Name</label>
+            <input type="text" class="form-control" name="last_name" #last_name="ngModel" [(ngModel)]="details.last_name">
+        </div>
+    </div>
+    <hr>
+    <div class="row mt-4">
+        <!-- <div class="col">
+            <label for="">Gender</label>
+        </div> -->
+        <div class="col">
+            <label for="">Middle Name</label>
+            <input type="text" class="form-control" name="middle_name" #middle_name="ngModel" [(ngModel)]="details.middle_name">
+        </div>
+        <div class="col">
+            <label for="">Father Name</label>
+            <input type="text" class="form-control" name="father_name" #father_name="ngModel" [(ngModel)]="details.father_name">
+        </div>
+    </div>
+    <hr>
+    <div class="row mt-4">
+        <div class="col">
+            <label for="">Mobile Number</label>
+            <input type="number" class="form-control" name="mobile_number" #mobile_number="ngModel" [(ngModel)]="details.mobile_number">
+        </div>
+        <div class="col">
+            <label for="">Email</label>
+            <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="details.email">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <label for="">Aadhar Number</label>
+            <input type="number" class="form-control" name="aadhar" #aadhar="ngModel" [(ngModel)]="details.aadhar">
+        </div>
+        <div class="col">
+            <label for="">PAN</label>
+            <input type="text" class="form-control" name="pan_card" #pan_card="ngModel" [(ngModel)]="details.pan_card">
+        </div>
+    </div>
+    <hr>
+    <div class="row mt-4">
+        <div class="col">
+            <label for="">Occupation Type</label>
+            <input type="text" class="form-control" name="occupation_type" #occupation_type="ngModel" [(ngModel)]="details.occupation_type">
+        </div>
+        <div class="col">
+            <label for="">Income Source</label>
+            <input type="text" class="form-control" name="source_of_income" #source_of_income="ngModel" [(ngModel)]="details.source_of_income">
+        </div>
+        <div class="col">
+            <label for="">Gross Annual Income</label>
+            <input type="text" class="form-control" name="gross_annual_income" #gross_annual_income="ngModel" [(ngModel)]="details.gross_annual_income">
+        </div>
+    </div>
+    <div class="container text-center mt-3">
+        <button (click)="submitUpdate(title.value, first_name.value, last_name.value, father_name.value, middle_name.value, mobile_number.value,email.value, aadhar.value, pan_card.value, occupation_type.value, source_of_income.value, gross_annual_income.value)" class="btn btn-primary">Update</button>
+    </div>
+</form>
+
+<!-- <form #updateAddress="ngForm" class="border p-2">
+    <div class="row">
+
+    </div>
+</form> -->

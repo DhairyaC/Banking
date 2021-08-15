@@ -1,0 +1,79 @@
+<div class="row text-center mt-3">
+    <div class="col-md-8">
+        <!-- Slogan/Info -->
+        <div class="jumbotron py-2">
+            <!-- <h1 class="display-4">Hello, world!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
+            <img src="../../../assets/js/front-page.jpg" width=750 height=500 alt="">
+          
+            
+          </div>
+          
+          <!-- <a class="btn btn-primary" routerLink="/login" role="button">Proceed to Login</a> -->
+    </div>
+    <div class="col-md-4">
+        <!-- options -->
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action active" aria-current="true">
+                <i class="fa fa-arrow-down" aria-hidden="true"></i> Open New Account / Internet Banking
+            </a>
+            <a routerLink="/register-account" class="list-group-item list-group-item-action">Open new Account</a>
+            <a routerLink="/register-ib" class="list-group-item list-group-item-action">Apply for Internet Banking</a>
+            <a routerLink='/admin-login' class="list-group-item list-group-item-action">Customer Login</a>
+          </div> 
+<!-- Approval  -->
+          <div class="card mt-4">
+            <div class="card-header bg-primary text-white ">
+              Track Approval Status
+            </div>
+            <form #trackStatusForm="ngForm" (ngSubmit)="trackStatusForm.form.reset()">
+              <div class="card-body bg-light">
+                <!-- SRN -->
+                <div class="row">
+                  <div class="col">
+                    <label for="">SRN</label>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <input name="srn" type="number" class="form-control" #srn="ngModel" [(ngModel)]="track.srn" required min=1000000 max=9999999>
+                      <div *ngIf="!srn?.valid && (srn?.dirty || srn?.touched)" class="error">
+                        <div *ngIf="srn.errors?.required">
+                            <small class="text-danger">SRN required</small>
+                        </div>
+                        <div *ngIf="srn.errors?.min || srn.errors?.max">
+                            <small class="text-danger">SRN must be 7 digit</small>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- OTP -->
+                <div class="row mt-3">
+                  <div class="col">
+                    <label for="">OTP</label>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <input type="number" name="otp" class="form-control" required min=100000 max=999999 #otp="ngModel" [(ngModel)]="track.otp">
+                      <div *ngIf="!otp?.valid && (otp?.dirty || otp?.touched)" class="error">
+                        <div *ngIf="otp.errors?.required">
+                            <small class="text-danger">OTP is required</small>
+                        </div>
+                        <div *ngIf="otp.errors?.min || otp.errors?.max">
+                            <small class="text-danger">OTP must be 6 digit</small>
+                        </div>
+                      </div>
+                      <button (click)="getOtp(trackStatusForm.value.srn)" class="btn btn-primary btn-sm float-end mt-3 btn-sm" [disabled]="srn.invalid">Get OTP</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer bg-light">
+                <button (click)="trackStatus(trackStatusForm.value.otp)" class="btn btn-primary">Track</button>
+              </div>
+            </form>
+          </div> 
+    </div>
+</div>

@@ -1,0 +1,57 @@
+
+<div class="container">
+    
+    <form #form="ngForm">
+        <div class="row">
+            <div class="col">
+                <label for=""><h5>From</h5></label>
+                <input type="date" name="from" class="form-control" #from>
+            </div>
+            <div class="col">
+                <label for=""><h5>To</h5></label>
+                <input type="date" name="to" class="form-control" #to>
+            </div>
+        </div>
+        <div class="container text-center">
+            <button (click)="fetchTransactions(from.value, to.value)" class="btn btn-primary mt-5">Get Transactions</button>
+        </div>
+    </form>
+    <!--  -->
+    <table class="table table-bordered table-hover my-5">
+        <thead>
+            <tr>
+                <th>Account Number</th>
+                <th>Name</th>
+                <th>Account Type</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{info.acno}}</td>
+                <td>{{info.name}}</td>
+                <td>{{info.type}}</td>
+                <td>{{info.balance}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table  class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Paid To/Recieved from</th>
+                <th>Mode</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of trList">
+                <td>{{t.paidToAccNum}}</td>
+                <td>{{t.mode}}</td>
+                <td>{{t.amount}}</td>
+                <td>{{t.tranStatus}}</td>
+            </tr> 
+        </tbody>
+    </table>
+</div>

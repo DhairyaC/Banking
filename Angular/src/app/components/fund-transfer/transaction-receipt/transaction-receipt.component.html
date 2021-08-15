@@ -1,0 +1,28 @@
+<div class="modal-body">
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Reference ID</th>
+                <th>To Account</th>
+                <th>From Account</th>
+                <th>Amount</th>
+                <th>Transaction DateTime</th>
+                <th>Remark</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{Fund.referenceId}}</td>
+                <td>{{Fund.paidToAccNum}}</td>
+                <td>{{Fund.fromAccNum}}</td>
+                <td>{{Fund.amount}}</td>
+                <td>{{Fund.transTime}}</td>
+                <td>{{Fund.remark}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div >
+    <button type="button" (click)="close()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>

@@ -1,0 +1,33 @@
+<div class="container border p-4">
+    <div class="row">
+        <div class="col">
+            Account Number : {{accNo}}
+        </div>
+        <div class="col">
+            Balance : {{bal}}
+        </div>
+    </div>
+    <!-- recent transaction -->
+    <table class="table mt-5 border">
+        <thead class="text-center">
+            <tr>
+                <th>To/From Account Number</th>
+                <th>Credited</th>
+                <th>Debited</th>
+                <th>Date(DD/MM/YY)</th>
+                <th>Remarks</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <ng-container *ngFor="let t of trList">
+            <tr>
+                <td>{{t.paidToAccNum}}</td>
+                <td class="text-success">{{t.amount > 0 ? t.amount : ''}}</td>
+                <td class="text-danger">{{t.amount < 0 ? -t.amount : ''}}</td>
+                <td>{{t.transTime}}</td>
+                <td>{{t.remark}}</td>
+            </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

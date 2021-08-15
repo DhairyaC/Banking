@@ -1,0 +1,50 @@
+<div class="text-center my-3">
+    <h2>Customer Login</h2>
+</div>
+<div class="container align-center w-25 mt-4 border p-3">
+    <form #custLoginForm="ngForm" (ngSubmit)="doCustomerLogin(custLoginForm.value.userId, custLoginForm.value.customerPassword); custLoginForm.form.reset()">
+        <!-- Email -->
+        <div class="form-group">
+          <label for="exampleInputEmail1">User ID</label>
+          <input type="number" name="userId" #userId="ngModel" [(ngModel)]="custservice.customer.userId" 
+          class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="User ID" required email min=1000000 max=9999999>
+          <div *ngIf="!userId?.valid && (userId?.dirty || userId?.touched)" class="error">
+                <div *ngIf="userId.errors?.required">
+                    <small class="text-danger">User ID</small>
+                </div>
+                <div *ngIf="userId.errors?.min || userId.errors?.max">
+                    <small class="text-danger">User ID must be 7 digit</small>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Login -->
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password" name="customerPassword" 
+          #customerPassword="ngModel" [(ngModel)]="custservice.customer.customerPassword" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" required>
+          <div *ngIf="!customerPassword?.valid && (customerPassword?.dirty || customerPassword?.touched)" class="error">
+            <div *ngIf="customerPassword.errors?.required">
+                <small class="text-danger">Password required</small>
+            </div>
+            <div *ngIf="customerPassword.errors?.pattern">
+                <small class="text-danger">Minimum 8 characters and atleast one lowercase, uppercase, special, number</small>
+            </div>
+        </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <a routerLink="/home" class="btn btn-danger w-100">Back</a>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary  w-100">Login</button>
+            </div>
+        </div>
+    </form>
+    <div class="text-center my-4">
+        <a routerLink="/register-account">Register?</a><br>
+        <a routerLink="/forgot-password">Forgot Password?</a><br>
+        <a routerLink="/forgot-id">Forgot Id?</a>
+    </div>
+</div>
+

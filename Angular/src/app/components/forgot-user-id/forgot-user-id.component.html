@@ -1,0 +1,52 @@
+<div class="text-center mt-3">
+    <h2>Forgot User ID</h2>
+</div>
+
+<div class="container border w-50 p-5 mt-5">
+    <form #forgotIdForm="ngForm" >
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <label for=""><h5>Enter Account Number</h5></label>
+            </div>
+            <div class="col-md-6">
+                <input type="number" class="form-control" name="accountNumber" #accountNumber="ngModel" [(ngModel)]="forgot.accountNumber" 
+                required min=10000000000 max=99999999999>
+                <div *ngIf="!accountNumber?.valid && (accountNumber?.dirty || accountNumber?.touched)" class="error">
+                    <div *ngIf="accountNumber.errors?.required">
+                        <small class="text-danger">Account Number required</small>
+                    </div>
+                    <div *ngIf="accountNumber.errors?.min || accountNumber.errors?.max">
+                        <small class="text-danger">Account Number must be 11 digit</small>
+                    </div>
+                </div>
+            </div>
+        </div> <hr>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <label for=""><h5>Enter OTP</h5></label>
+            </div>
+            <div class="col-md-6">
+                <input name="otp" #otp="ngModel" [(ngModel)]="forgot.otp" required min=100000 max=999999 type="number" class="form-control">
+                <div *ngIf="!otp?.valid && (otp?.dirty || otp?.touched)" class="error">
+                    <div *ngIf="otp.errors?.required">
+                        <small class="text-danger">OTP is required</small>
+                    </div>
+                    <div *ngIf="otp.errors?.min || otp.errors?.max">
+                        <small class="text-danger">OTP must be 6 digit</small>
+                    </div>
+                </div>
+                <button (click)="getOtp(forgotIdForm.value.accountNumber)" class="btn btn-primary btn-sm mt-3 float-end" [disabled]="accountNumber.invalid">Get OTP</button>
+            </div>
+        </div>
+        
+        <!-- submit button -->
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <a routerLink="/login" class="btn btn-danger float-end">Back</a>
+            </div>
+            <div class="col-md-6">
+                <button (click)="getUserIdByMail(forgotIdForm.value.accountNumber, forgotIdForm.value.otp)" class="btn btn-success" type="submit" [disabled]="forgotIdForm.invalid">Proceed</button>
+            </div>
+        </div>
+    </form>
+</div>

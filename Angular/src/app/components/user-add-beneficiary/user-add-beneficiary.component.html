@@ -1,0 +1,59 @@
+<form #addBeneficiaryForm="ngForm" class="p-5 border" (ngSubmit)="addBeneficiaryForm.form.reset()">
+    <!-- name -->
+    <div class="row">
+        <div class="col">
+            <label for="">Beneficiary Name<span class="text-danger">*</span></label>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="payee.name" required>
+            <div *ngIf="!name?.valid && (name?.dirty || name?.touched)" class="error">
+                <div *ngIf="name.errors?.required">
+                    <small class="text-danger">Beneficiary name required</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- account number -->
+    <div class="row mt-4">
+        <div class="col">
+            <label for="">Beneficiary Account Number<span class="text-danger">*</span></label>
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" name="b" #b="ngModel" [(ngModel)]="payee.b" 
+            required min=10000000000 max=99999999999>
+            <div *ngIf="!b?.valid && (b?.dirty || b?.touched)" class="error">
+                <div *ngIf="b.errors?.required">
+                    <small class="text-danger">Account Number required</small>
+                </div>
+                <div *ngIf="b.errors?.min || b.errors?.max">
+                    <small class="text-danger">Account Number must be 11 digit</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- re-enter account number -->
+    <div class="row mt-4">
+        <div class="col">
+            <label for="">Re-enter Account Number<span class="text-danger">*</span></label>
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" required name="bb" #bb="ngModel" [(ngModel)]="payee.bb" 
+            required min=10000000000 max=99999999999>
+            
+        </div>
+    </div>
+    <!-- nickname -->
+    <div class="row mt-4">
+        <div class="col">
+            <label for="">Nickname</label>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" name="nickname" #nickname="ngModel" [(ngModel)]="payee.nickname">
+        </div>
+    </div>
+    <!-- button -->
+    <div class="text-center mt-5">
+        <button (click)="addBeneficiary(addBeneficiaryForm.value.name, addBeneficiaryForm.value.b, addBeneficiaryForm.value.bb)" 
+        [disabled]="addBeneficiaryForm.invalid" class="btn btn-primary">Save</button>
+    </div>
+</form>

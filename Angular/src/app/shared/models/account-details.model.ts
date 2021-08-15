@@ -1,0 +1,20 @@
+export class AccountDetails{
+    cust_id:number
+    title:string
+    first_name:string
+    middle_name:string
+    last_name:string
+    father_name:string
+    gender:string
+    mobile_number:string
+    dob:string
+    email:string
+    aadhar:number
+    pan_card:string
+    occupation_type:string
+    source_of_income:string
+    gross_annual_income:string
+    debit_card:boolean
+    net_banking:boolean
+    approval_status:string
+}

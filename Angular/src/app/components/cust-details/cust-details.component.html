@@ -1,0 +1,86 @@
+<div class="text-center my-3">
+    <h2>Account Details</h2>
+</div>
+<div>
+    <h5 class="mt-5">Basic Information</h5>
+    <div class="container border p-4">
+        <div class="row">
+            <div class="col">
+                Title : {{custDetails[0].title}}
+            </div>
+            <div class="col">
+                First Name : {{custDetails[0].first_name}}
+            </div>
+            <div class="col">
+                Middle Name : {{custDetails[0].middle_name}}
+            </div>
+            <div class="col">
+                Last Name : {{custDetails[0].last_name}}
+            </div>
+        </div>
+    </div>
+    <div class="container border p-4 mt-2">
+        <div class="row">
+            <div class="col">
+                Mobile Number : {{custDetails[0].mobile_number}}
+            </div>
+            <div class="col">
+                Email ID : {{custDetails[0].email}}
+            </div>
+            <div class="col">
+                Aadhar Number : {{custDetails[0].aadhar}}
+            </div>
+            <div class="col">
+                Pan Number : {{custDetails[0].pan_card}}
+            </div>
+        </div>
+    </div>
+    <div class="container border p-4 mt-2">
+        <div class="row">
+            <div class="col">
+                Occupation Type : {{custDetails[0].occupation_type}}
+            </div>
+            <div class="col">
+                Income Source : {{custDetails[0].source_of_income}}
+            </div>
+            <div class="col">
+                Gross Annual Income : {{custDetails[0].gross_annual_income}}
+            </div>
+            <div class="col">
+                DOB : {{custDetails[0].dob}}
+            </div>
+        </div>
+    </div>
+    <h5 class="mt-5">Residential Address</h5>
+    <div class="container border p-4">
+        <div class="row">
+            <div class="col">
+                Line 1 : {{custDetails[0].line1}} <br>
+            </div>
+            <div class="col">
+                Line 2 :{{custDetails[0].line2}}
+            </div>
+        </div>
+        <hr>
+        <div class="row mt-3">
+            <div class="col">
+                Landmark : {{custDetails[0].landmark}}
+            </div>
+            <div class="col">
+                City : {{custDetails[0].city}}
+            </div>
+            <div class="col">
+                State : {{custDetails[0].cust_state}}
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <a href="dashboard/{{adminId}}" class="btn btn-primary">Back</a>
+        </div>
+        <div class="col-md-6">
+            <button (click)="sendApproval()" class="btn btn-success float-end">Approve</button>
+            <button (click)="rejectApproval()" class="btn btn-danger float-end mx-3">Reject</button> &nbsp;&nbsp;
+        </div>
+    </div>
+</div>

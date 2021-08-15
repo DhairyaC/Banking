@@ -1,0 +1,38 @@
+<div class="text-center mt-3">
+    <h2>Dashboard</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-3 mt-5">
+        <div class="list-group">
+            <a class="list-group-item list-group-item-action active" aria-current="true">
+                <i class="fa fa-arrow-down" aria-hidden="true"></i> &nbsp;&nbsp; <h5>{{nameOnDashboard}}</h5>
+            </a>
+            <!-- <a routerLink='account-details' class="list-group-item list-group-item-action">Account Details</a> -->
+            <a routerLink="./" class="list-group-item list-group-item-action">Account Summary</a>
+            <a routerLink="fund-transfer" class="list-group-item list-group-item-action">Fund Transfer</a>
+            <!-- <a routerLink="statement" class="list-group-item list-group-item-action">Account Statement</a> -->
+            <a routerLink="add-beneficiary" class="list-group-item list-group-item-action">Add Beneficiary</a>
+          </div>
+    </div>
+    <div class="col-md-9">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse bg-primary rounded p-2" id="navbarcollapse">
+                <ul class="navbar-nav justify-content-between w-100">
+                    <li><a routerLink="statement" class="nav-link active text-white">Account Statement</a></li>
+                    <!-- <li><a routerLink="fund-transfer" class="nav-link text-white">Fund Transfer</a></li> -->
+                    <li><a routerLink="account-details" class="nav-link text-white">Update details</a></li>
+                    <li><a routerLink="change-password" class="nav-link text-white">Change Password</a></li>
+                    <li><a (click)="logout()" class="nav-link text-white">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <h5 class="text-danger">Last Login : {{lastLogin | date:'medium'}}</h5>
+          <!-- router outlet of child components -->
+            <router-outlet></router-outlet>
+    </div>
+</div>
+

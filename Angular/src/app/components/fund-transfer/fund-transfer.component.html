@@ -1,0 +1,168 @@
+<!-- <div class="text-center mt-3">
+    <h4>Fund Transfer</h4>
+</div> -->
+
+<div class="container align-center border">
+    <form #fundTransferForm="ngForm" (ngSubmit)="fundTransferForm.resetForm()">
+        <div class="">
+            <div class="row mt-5 form-group">
+                <div class="col-md-6">
+                    <label for="">
+                        <h5>Choose Fund Transfer Type<span class="text-danger">*</span></h5>
+                    </label>
+                </div>
+                <div class="dropdown col-md-6">
+                    <select class="form-select" aria-label="Default select example" name="Mode" #Mode="ngModel" [(ngModel)]="fund.Mode">
+                        <option selected disabled>Mode of Transfer</option>
+                        <option value="NEFT">NEFT</option>
+                        <option value="RTGS">RTGS</option>
+                        <option value="IMPS">IMPS</option>
+                      </select>
+                </div>
+            </div>
+
+            <!-- List of Beneficiaries -->
+            <div class="row mt-5 form-group">
+                <div class="col-md-6">
+                    <label for="">
+                        <h5>Choose Beneficiary<span class="text-danger">*</span></h5>
+                    </label>
+                </div>
+                <div class="dropdown col-md-6">
+                    <select class="form-select" aria-label="Default select example" name="ToAccount" #ToAccount="ngModel" [(ngModel)]="fund.ToAccount">
+                        <option selected disabled>List of Beneficiaries</option>
+                        <option *ngFor="let b of bList" [value]="b.bAccountNumber">{{b.nickname}}</option>
+                      </select>
+                </div>
+            </div>
+
+            <!-- From Account -->
+            <!-- <div class="row mt-5 form-group">
+                <div class="col-md-6">
+                    <label for="">
+                        <h5>From Account<span class="text-danger">*</span></h5>
+                    </label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input name="FromAccount" #FromAccount="ngModel" [(ngModel)]="fund.FromAccount" type="number"
+                        placeholder="Account Number" class="form-control" required min=1000000000 max=9999999999>
+                    <div *ngIf="!FromAccount?.valid && (FromAccount?.dirty || FromAccount?.touched)" class="error">
+                        <div *ngIf="FromAccount.errors?.required">
+                            <small class="text-danger">Account Number required</small>
+                        </div>
+                        <div *ngIf="FromAccount.errors?.min || FromAccount.errors?.max">
+                            <small class="text-danger">Account Number must be 10 digit number</small>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- To Account -->
+             <!-- <div class="row mt-5 form-group">
+                <div class="col-md-6">
+                    <label for="">
+                        <h5>To Account<span class="text-danger">*</span></h5>
+                    </label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input name="ToAccount" #ToAccount="ngModel" [(ngModel)]="fund.ToAccount" type="number"
+                        placeholder="Account Number" class="form-control" required min=1000000000 max=9999999999>
+                    <div *ngIf="!ToAccount?.valid && (ToAccount?.dirty || ToAccount?.touched)" class="error">
+                        <div *ngIf="ToAccount.errors?.required">
+                            <small class="text-danger">Account Number required</small>
+                        </div>
+                        <div *ngIf="ToAccount.errors?.min || ToAccount.errors?.max">
+                            <small class="text-danger">Account Number must be 10 digit number</small>
+                        </div>
+                    </div>
+                </div>
+            </div>  -->
+            <!--Add New Account Button-->
+            <!-- <div class="row mt-3 form-group">
+                <div class="col-md-6">
+                    <label for=""><h5><span class="text-danger"></span></h5></label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <button (click)="addnewaccount()" class="float-end btn btn-primary mt-3">Add new +</button>
+                </div>
+            </div> -->
+        
+            <!--Amount-->
+            <div class="row mt-5 form-group">
+                <div class="col-md-6">
+                    <label for="">
+                        <h5>Amount<span class="text-danger">*</span></h5>
+                    </label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input name="Amount" #Amount="ngModel" [(ngModel)]="fund.Amount" type="number"
+                        placeholder="Enter Amount" class="form-control" required min=100 max=100000>
+                    <div *ngIf="!Amount?.valid && (Amount?.dirty || Amount?.touched)" class="error">
+                        <div *ngIf="Amount.errors?.required">
+                            <small class="text-danger">Amount is required</small>
+                        </div>
+                        <div *ngIf="Amount.errors?.min || Amount.errors?.max">
+                            <small class="text-danger">Minimum 100, Maximum 100000</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Transaction Date-Time-->
+            <!-- <div class="row mt-5 form-group">
+                <div class="col-md-6">
+                    <label for="">
+                        <h5>Transaction Date-Time<span class="text-danger">*</span></h5>
+                    </label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input name="TransactionDateTime" #TransactionDateTime="ngModel" [(ngModel)]="fund.TransactionDateTime" type="datetime-local"
+                        placeholder="Enter Date-Time" class="form-control" required >
+                    <div *ngIf="!TransactionDateTime?.valid && (TransactionDateTime?.dirty || TransactionDateTime?.touched)" class="error">
+                        <div *ngIf="TransactionDateTime.errors?.required">
+                            <small class="text-danger">Transaction Date-Time required</small>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!--Maturity Instructions-->
+            <div class="row mt-5 form-group">
+                <div class="col-md-6">
+                    <label for="">
+                        <h5>Maturity Instructions<span class="text-danger">*</span></h5>
+                    </label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input name="MaturityInstructions" #MaturityInstructions="ngModel" [(ngModel)]="fund.MaturityInstructions" type="text"
+                        placeholder="Enter Maturity Instructions" class="form-control" required >
+                    <div *ngIf="!MaturityInstructions?.valid && (MaturityInstructions?.dirty || MaturityInstructions?.touched)" class="error">
+                        <div *ngIf="MaturityInstructions.errors?.required">
+                            <small class="text-danger">Maturity Instructions are required</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Remark-->
+            <div class="row mt-5 form-group">
+                <div class="col-md-6">
+                    <label for="">
+                        <h5>Remarks</h5>
+                    </label>
+                </div>
+                <div class="col-md-6 form-group">
+                    <input name="Remark" #Remark="ngModel" [(ngModel)]="fund.Remark" type="text"
+                        placeholder="Enter Remarks" class="form-control">
+                </div>
+            </div>
+            <!--Buttons-->
+            <div class="row mt-3 form-group">
+                    <div class="row">
+                        <div class="col">
+                            <button (click)="fundTransferForm.resetForm()" class="float-end btn btn-danger mt-3">Reset</button>
+                        </div>
+                        <div class="col">
+                            <button (click)="submitTransferForm()" class="btn btn-success mt-3 ml-3">Make Payment</button> 
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </form>
+</div>
